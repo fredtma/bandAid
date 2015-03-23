@@ -1,0 +1,74 @@
+<ion-view title="{{service.title}}">
+   <ion-tabs class="tabs-sky tabs-icon-left"  on-swipe-up="module.action()">
+
+      <ion-tab title="Profile" icon-on="ion-ios7-person" icon-off="ion-ios7-person-outline">
+         <ion-content has-header="true" has-bouncing="false" padding="true">
+            <div class="list list-inset" on-swipe-up="module.action()">
+               <div class="item item-icon-left item-divider"><i class="icon ion-ios7-photos-outline"></i>Profile Image</div>
+               <a class="item item-avatar">
+                  <img src="img/default.jpg"  ng-click="module.getPicture($event)" /><h2>Avatar</h2><p>Tap image to edit</p>
+               </a>
+               <div class="item item-icon-left item-divider"><i class="icon ion-ios7-person-outline"></i>Profile</div>
+               <label class="item item-input item-floating-label"><span class="input-label">Name & Surname</span><input type="text" placeholder="Profile's Name" ng-model="service.name" autocomplete="name" /></label>
+               <label class="item item-input item-floating-label"><span class="input-label">Email & Username</span><input type="email" placeholder="Your Email" ng-model="father.email" autocomplete="email" /></label>
+               <label class="item item-input item-floating-label" ng-if="!father.jesua.alpha"><span class="input-label">Password</span><input type="password" placeholder="Password" ng-model="father.password"/></label>
+            </div>
+         </ion-content>
+      </ion-tab>
+
+      <ion-tab title="Details" icon-on="ion-ios7-paper" icon-off="ion-ios7-paper-outline">
+         <ion-content has-header="true" has-bouncing="false" padding="true">
+            <div class="list list-inset" on-swipe-up="module.action()">
+               <div class="item item-icon-left item-divider"><i class="icon ion-ios7-person-outline"></i>Profile Details</div>
+               <label class="item item-input item-stacked-label">
+                  <span class="input-label">Gender</span>
+                  <ion-toggle ng-model="father.gender" toggle-class="toggle-calm" style="border:none;"  >{{!father.gender?"Female":"Male"}}</ion-toggle>
+               </label>
+               <lable class="item item-input range range-royal">
+                  <span style="width:100px">Birth Year: </span> <span class="input-label" ng-bind="service.year"></span>
+                  <i class="icon ion-ios7-calendar-outline"></i>
+                  <input type="range" name="year" min="1930" max="2005"  ng-model="service.year"  />
+                  <i class="icon ion-ios7-calendar"></i>
+               </lable>
+               <lable class="item item-input range range-balanced">
+                  <span style="width:100px">Birth Month: </span><span class="input-label" ng-bind="service.month"></span>
+                  <i class="icon ion-ios7-calendar-outline"></i>
+                  <input type="range" name="month" min="1" max="12" ng-model="service.month"  />
+                  <i class="icon ion-ios7-calendar"></i>
+               </lable>
+               <lable class="item item-input range range-calm">
+                  <span style="width:100px">Birth Day: </span><span class="input-label" ng-bind="service.day"></span>
+                  <i class="icon ion-ios7-calendar-outline"></i>
+                  <input type="range" name="day" min="1" max="31" ng-model="service.day"  />
+                  <i class="icon ion-ios7-calendar"></i>
+               </lable>
+            </div>
+         </ion-content>
+      </ion-tab>
+
+      <ion-tab title="Contacts" icon-on="ion-ios7-telephone" icon-off="ion-ios7-telephone-outline">
+         <ion-content has-header="true" has-bouncing="false" padding="true">
+            <div class="list list-inset" on-swipe-up="module.action()">
+               <div class="item item-icon-left item-divider item-button-right" style="height:40px;vertical-align: top;">
+                  <i class="icon ion-ios7-telephone-outline"></i>
+                  Contact Details
+                  <button class="button button-calm button-clear icon-left ion-plus-circled icon-modified" ng-click="module.showMe('revelation')">Add</button>
+               </div>
+               <div ng-if="display.revelation" class="button-bar" >
+                  <a class="button button-outline button-positive" ng-click="module.addChild('revelation', {'number':'', 'type':'mobile', 'isNew':true})">Mobile</a>
+                  <a class="button button-outline button-royal" ng-click="module.addChild('revelation', {'number':'', 'type':'fixed', 'isNew':true})">Fixed</a>
+                  <a class="button button-outline button-balanced" ng-click="module.addChild('revelation', {'number':'', 'type':'fax', 'isNew':true})">Fax</a>
+                  <a class="button button-outline button-calm" ng-click="module.addChild('revelation', {'number':'', 'type':'work', 'isNew':true})">Work</a>
+                  <a class="button button-outline button-silver" ng-click="module.addChild('revelation', {'number':'', 'type':'other', 'isNew':true})">other</a>
+               </div>
+               <label ng-repeat="sub in child.gerund.revelation" class="item item-input item-floating-label">
+                  <span class="input-label" style="text-transform: capitalize;" ng-bind="sub.type"></span>
+                  <input type="hidden" placeholder="New {{sub.type}} number" ng-model="sub.user" />
+                  <input type="tel" placeholder="New {{sub.type}} number" ng-model="sub.number" />
+               </label>
+            </div>
+         </ion-content>
+      </ion-tab>
+
+   </ion-tabs>
+</ion-view>

@@ -1,0 +1,17 @@
+<ion-view title="{{service.title}}">
+   <ion-content has-header="true" has-bouncing="false" padding="true">
+      <div class="list list-inset" on-swipe-up="module.action()">
+         <div class="item item-icon-left item-divider"><i class="icon ion-ios7-photos-outline"></i>Checkout Articles</div>
+         <div class="item item-thumbnail-left item-text-wrap" ng-repeat="father in articles">
+            <img ng-if="father.path" ng-src="img/80/{{father.path}}" />
+            <img ng-if="!father.path" ng-src="img/default.jpg" />
+            <h2 ng-bind="father.name"></h2><p ng-bind="father.description| limitTo:75" class="item-brief" style="width:80%;"></p>
+            <button class="button icon-left button-clear button-assertive ion-close-circled " style="position:absolute;top:5px;right:5px;" ng-click="articles.slice($index,1);">Remove</button>
+         </div>
+         <div class="item item-icon-left item-divider"><i class="icon ion-ios7-home-outline"></i>Address</div>
+         <div class="item">
+            <ion-radio ng-model="address" ng-repeat="father in address" ng-value="'A'">{{father.street}} {{father.suburb}} {{father.city}}</ion-radio>
+         </div>
+      </div>
+   </ion-content>
+</ion-view>

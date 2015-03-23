@@ -1,0 +1,40 @@
+<ion-view title="{{service.title}}">
+   <ion-content has-header="true" has-bouncing="false" padding="true">
+      <div class="list list-inset" on-swipe-up="module.action()">
+         <div class="item item-icon-left item-divider"><i class="icon ion-ios7-photos-outline"></i>Profile Image</div>
+         <a class="item item-avatar">
+            <img src="img/default.jpg"  ng-click="module.getPicture($event)" /><h2>Avatar</h2><p>Tap image to edit</p>
+         </a>
+         <div class="item item-icon-left item-divider"><i class="icon ion-ios7-person-outline"></i>Profile Details</div>
+         <label class="item item-input item-floating-label"><span class="input-label">Name & Surname</span><input type="text" placeholder="Profile's Name" ng-model="service.name" autocomplete="name" /></label>
+         <label class="item item-input item-floating-label"><span class="input-label">Email & Username</span><input type="email" placeholder="Your Email" ng-model="father.email" autocomplete="email" /></label>
+         <label class="item item-input item-floating-label" ng-if="!father.jesua.alpha"><span class="input-label">Password</span><input type="password" placeholder="Password" ng-model="father.password"/></label>
+         <label class="item item-input item-stacked-label">
+            <span class="input-label">Gender</span>
+            <ion-toggle ng-model="father.gender" toggle-class="toggle-calm" style="border:none;"  >{{!father.gender?"Female":"Male"}}</ion-toggle>
+         </label>
+         <lable class="item item-input range range-royal">
+            <span style="width:100px">Birth Year: </span> <span class="input-label" ng-bind="service.year"></span>
+            <i class="icon ion-ios7-calendar-outline"></i>
+            <input type="range" name="year" min="1930" max="2005"  ng-model="service.year"  />
+            <i class="icon ion-ios7-calendar"></i>
+         </lable>
+         <lable class="item item-input range range-balanced">
+            <span style="width:100px">Birth Month: </span><span class="input-label" ng-bind="service.month"></span>
+            <i class="icon ion-ios7-calendar-outline"></i>
+            <input type="range" name="month" min="1" max="12" ng-model="service.month"  />
+            <i class="icon ion-ios7-calendar"></i>
+         </lable>
+         <lable class="item item-input range range-calm">
+            <span style="width:100px">Birth Day: </span><span class="input-label" ng-bind="service.day"></span>
+            <i class="icon ion-ios7-calendar-outline"></i>
+            <input type="range" name="day" min="1" max="31" ng-model="service.day"  />
+            <i class="icon ion-ios7-calendar"></i>
+         </lable>
+         <label class="item item-input">
+            <span class="input-label">Month</span>
+            <input type="month">
+         </label>
+      </div>
+   </ion-content>
+</ion-view>

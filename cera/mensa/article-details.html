@@ -1,0 +1,32 @@
+<ion-view title="{{service.name}}">
+   <ion-content has-header="true" has-bouncing="true" padding="true">
+      <div class="list list-inset">
+         <div class="item item-icon-left item-divider"><i class="icon ion-ios7-photos-outline"></i>Article's Details</div>
+         <a class="item row">
+            <div class="col">
+               <img ng-if="!father.path" src="img/default.jpg" class="full-image" />
+               <img ng-if="father.path" ng-src="img/400/{{father.path}}" class="full-image" />
+            </div>
+            <div class="col">
+               <h2 ng-bind="father.name"></h2>
+               <p ng-bind="father.description" class="item-brief"></p>
+               <p class="item-brief">
+                  Prescription Details....<br/>
+                  Closes Pharmacy Details...<br/>
+                  Prescription Requirement...<br/>
+                  Dosage Details...<br/>
+               </p>
+         <label class="item item-input">
+            <span class="input-label">Month</span>
+            <input type="date" value="12">
+         </label>
+            </div>
+         </a>
+         <div class="item item-icon-left item-divider"><i class="icon ion-cash"></i> ZAR <span ng-bind="father.cost"></span></div>
+      </div>
+   </ion-content>
+      <div class="bar bar-footer ">
+         <button class="button button-outline button-positive icon-left ion-ios7-cart" style="width:48%" ng-click="module.add2Cart()"> Add To Cart</button>
+         <button class="button button-outline button-assertive icon-left ion-card" ng-click="checkout()" style="width:48%"> Buy Now</button>
+      </div>
+</ion-view>

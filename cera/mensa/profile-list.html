@@ -1,0 +1,29 @@
+<ion-view title="{{service.title}}">
+   <ion-content class="has-header" has-header="true" has-bouncing="true" padding="false" >
+      <div class="bar bar-header item-input" style="padding-left:0px;">
+        <label class="item-input-wrapper light-bg" >
+          <i class="icon ion-ios7-search placeholder-icon"></i><input type="search" placeholder="Search" ng-model="service.search">
+        </label>
+        <button class="button button-clear " ng-click="service.search=null">Cancel</button>
+      </div>
+      <div class="item item-divider item-icon-left item-button-right">
+         <i class="icon ion-ios7-people"></i>
+         List of Administrator
+         <button class="list button button-clear button-assertive" style="right:60px;" ng-click="service.deleteItem = !service.deleteItem"><i class="icon ion-close-circled icon-shadow"></i></button>
+         <button class="list button button-clear button-balanced" ui-sref="call.register"><i class="icon ion-plus-circled icon-shadow"></i></button>
+      </div>
+      <ion-list show-reorder="false" can-swipe="true" show-delete="service.deleteItem" >
+         <ion-item ng-repeat="father in generations|filter:service.search"
+                   href="#/call/profile/{{father.jesua}}"
+                   class="item item-text-wrap"
+                   ng-class="{true:'item-icon-left',false:'item-avatar'}[!father.src]">
+            <i ng-if="!father.src" class="icon ion-ios7-person" ></i><img ng-if="father.src" ng-src="{{father.src}}" />
+            <span ng-bind="father.title+' '+father.firstname+' '+father.lastname"></span>
+            <blockquote class="infoblock" style="width:250px;"><span ng-bind="father.email"></span></blockquote>
+            <ion-reorder-button class="ion-navicon" on-reorder="reorderItem(article, $fromIndex, $toIndex)"></ion-reorder-button>
+            <ion-option-button ng-click="module.delete(father.jesua,$index)" class=""><a style="padding-top:15px;" class="button button-icon icon ion-close-circled assertive"></a> </ion-option-button>
+            <ion-delete-button class="ion-close-circled" ng-click="module.delete(father.jesua,$index)"></ion-delete-button>
+         </ion-item>
+      </ion-list>
+   </ion-content>
+</ion-view>
